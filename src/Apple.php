@@ -16,12 +16,20 @@ class Apple extends Fruit {
         return $this->rotten;
     }
 
-    public function squeeze(): float {
-        if($this->rotten){
-            //Will replace this with Exception handling later
-            throw new RottenFruitException("Cannot squeeze, apple is rotten");
+    public function squeeze(): float
+    {
+
+        error_log('Apple::squeeze() called – $this->rotten = ' . var_export($this->rotten, true));
+
+        if ($this->rotten) {
+            error_log('  -> throwing RottenFruitException');
+            throw new RottenFruitException("Cannot squeeze a rotten apple.");
         }
-        //Amount of juice is 50% of fruit volume
-        return $this->getVolume() * 0.5;
+
+        $juice = $this->getVolume() * 0.5;
+        error_log("  -> returning juice: {$juice}");
+        return $juice;
     }
+
+    
 }
