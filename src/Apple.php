@@ -1,5 +1,6 @@
 <?php 
 namespace App;
+use App\Exceptions\RottenFruitException;
 
 
 class Apple extends Fruit {
@@ -18,7 +19,7 @@ class Apple extends Fruit {
     public function squeeze(): float {
         if($this->rotten){
             //Will replace this with Exception handling later
-            die("Cannot squeeze, apple is rotten");
+            throw new RottenFruitException("Cannot squeeze, apple is rotten");
         }
         //Amount of juice is 50% of fruit volume
         return $this->getVolume() * 0.5;
