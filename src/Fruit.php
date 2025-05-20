@@ -1,7 +1,9 @@
 <?php
 namespace App;
+use App\Interfaces\IsSqueezable;
 
-abstract class Fruit {
+
+abstract class Fruit implements IsSqueezable{
     protected string $color;
     protected float $volume;
 
@@ -17,4 +19,6 @@ abstract class Fruit {
     public function getVolume(): float {
         return $this->volume;
     }
+
+    abstract public function squeeze(): float;
 }

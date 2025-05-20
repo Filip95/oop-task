@@ -1,13 +1,12 @@
 <?php 
 namespace App;
 
-use App\Interfaces\IsSqueezable;
 
-class Apple extends Fruit implements IsSqueezable{
+class Apple extends Fruit {
     private bool $rotten;
 
     public function __construct(string $color, float $volume){
-        parent::__construct('red', $volume);
+        parent::__construct($color, $volume);
         //returns true or false, comparing random number from 1 to 100 with 20, so 20% chance to get true(rotten), 80% chance false(fresh)
         $this->rotten = (random_int(1,100) <= 20);
     }
